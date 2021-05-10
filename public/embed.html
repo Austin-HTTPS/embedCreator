@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+    <link
+        type="application/json+oembed"
+        href="https://embedcreator.powercoder.repl.co/oembed">
+    <title>{{.Title}}</title>
+
+    <meta name='description' content="{{.Description}}">
+    <meta name="theme-color" content="#{{.Color}}">
+    <meta property="og:image" content="{{.Image}}">
+</head>
+<body class="bg-dark">
+    <center>
+        <h3 class="text-light">
+            Hello! This is the Discord embed link that you paste into Discord to create an embed!
+        </h3>
+        <a href="/" class="btn btn-primary">
+            Create your own embed!
+        </a>
+    </center>
+
+    <script>
+        setTimeout(()=> location.href = "{{.Redirect}}", 2000)
+    </script>
+</body>
+</html>

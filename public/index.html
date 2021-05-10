@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="embedCreator">
+    <meta name="description" content="This website generates a link that when pasted creates custom Discord embeds!">
+    <meta name="theme-color" content="#218997">
+    <title>Create embed</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+</head>
+
+<body class="bg-dark">
+    <center>
+        <div class="w-75">
+            <h1 class="text-light">Create a Discord Embed!</h1>
+
+            <div class="input-group">
+                <input placeholder="Insert color..." id='color' class="form-control">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <input type="color" onchange="color.value = this.value">
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <input placeholder="Insert redirect url..." id='url' class="form-control">
+            <br>
+            <input placeholder="Insert title..." id='title' class="form-control">
+            <br>
+            <input placeholder="Insert image url..." id='image' class="form-control">
+            <br>
+            <input placeholder="Insert description..." id='desc' class="form-control">
+            <br>
+
+            <div class="btn-group-vertical w-100">
+                <button onclick="createEmbed()" class="btn btn-primary">generate</button>
+
+                <input 
+                    style="display: none;"
+                    id="embedURL"
+                    class="text-light form-control text-dark"
+                    onclick="copyURL()"
+                    readonly>
+            </div>
+        </div>
+    </center>
+
+    <script>
+        function copyURL () {
+            embedURL.select()
+            document.execCommand("copy")
+            alert("The link has been copied to clipboard!")
+        }
+        
+        function createEmbed () {
+            embedURL.style.display = "block"
+            embedURL.value = encodeURI(
+                `${location.href}e?title=${title.value}&desc=${desc.value}&color=${color.value.slice(1)}&image=${image.value}&url=${url.value}`
+            )
+
+            copyURL()
+        }
+    </script>
+</body>
+
+</html>
